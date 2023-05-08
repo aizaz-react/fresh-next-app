@@ -1,0 +1,280 @@
+import { createTheme } from '@mui/material';
+import localFont from 'next/font/local';
+const Cour = localFont({ src: '../assets/fonts/cour.ttf' });
+const { breakpoints } = createTheme();
+
+export const darkTheme = createTheme({
+  breakpoints: {
+    values: {
+      // smLaptop: 768,
+      // mdLaptop: 1024,
+      // lgLaptop: 1440,
+      // xlLaptop: 1920,
+      // sxlLaptop: 2722,
+      xs: 320,
+      sm: 475,
+      md: 768,
+      lg: 1024
+    }
+  },
+  palette: {
+    common: {
+      black: '#000',
+      white: '#fff',
+      orange: '#E64A19',
+      yellow: '#FF8F00',
+      green: '#827717',
+      blue: '#3949AB',
+      purple: '#6A1B9A',
+      pink: '#880E4F'
+    },
+    mode: 'dark',
+    primary: {
+      main: '#B71C1C',
+      footer: '#191919',
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#f50057',
+      contrastText: '#fff'
+    },
+    error: {
+      main: '#f44336',
+      contrastText: '#fff'
+    },
+    text: {
+      primary: '#FFFFFF',
+      secondary: '#9B9B9B',
+      disabled: '#9B9B9B',
+      hint: 'rgba(0, 0, 0, 0.38)',
+      drawerText: '#9B9B9B',
+      iconColor: '#a4a4a4',
+      success: '#388E3C'
+    },
+    divider: '#999999',
+    background: {
+      paper: '#000000',
+      default: '#0F0F12',
+      header: '#000000'
+    },
+    action: {
+      active: 'rgba(0, 0, 0, 0.54)',
+      hover: 'rgba(0, 0, 0, 0.08)',
+      hoverOpacity: 0.08,
+      selected: 'rgba(0, 0, 0, 0.14)',
+      disabled: 'gray',
+      disabledBackground: '#F12E39'
+    }
+  },
+  typography: {
+    display1: {
+      fontFamily: '"Oswald", sans-serif',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontSize: '.9rem',
+      lineHeight: '1.5em',
+
+      [breakpoints.down('sm')]: {
+        fontSize: '.8rem'
+      }
+    },
+    display1Description: {
+      fontFamily: '"Oswald", sans-serif',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontSize: '.9rem',
+      lineHeight: '1.5em',
+      [breakpoints.down('lg')]: {
+        fontSize: '.8rem',
+        lineHeight: '1.3em'
+      },
+      [breakpoints.down('lg')]: {
+        fontSize: '.7rem',
+        lineHeight: '1.2em'
+      },
+      [breakpoints.down('md')]: {
+        fontSize: '.7rem',
+        lineHeight: '1.3em'
+      },
+      [breakpoints.down('sm')]: {
+        fontSize: '.5rem',
+        lineHeight: '1.8em'
+      }
+    },
+    display2: {
+      fontFamily: '"Ubuntu", sans-serif',
+      fontStyle: 'normal',
+      fontSize: '1.2rem',
+
+      [breakpoints.down('sm')]: {
+        fontSize: '5rem'
+      }
+    },
+    display2heading: {
+      fontFamily: '"Ubuntu", sans-serif',
+      fontStyle: 'normal',
+      fontWeight: 500,
+      fontSize: '3.5rem',
+      lineHeight: '4.5rem',
+      [breakpoints.down('lg')]: {
+        fontSize: '3.5rem',
+        lineHeight: '4rem'
+      },
+      [breakpoints.down('md')]: {
+        fontSize: '2.9rem',
+        lineHeight: '3.5rem'
+      },
+      [breakpoints.down('sm')]: {
+        fontSize: '1.5rem',
+        lineHeight: '1.7rem'
+      }
+    },
+    display3: {
+      fontFamily: '"Courier New"'
+    }
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: '"Courier New"';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('Raleway'), local('Raleway-Regular'), url(${Cour}) format('woff2');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&.Mui-disabled': {
+            border: '1px solid gray',
+            background: '#252525'
+          }
+        }
+      }
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          input: {
+            '&:-webkit-autofill': {
+              WebkitBoxShadow: '0 0 0 100px #000 inset',
+              WebkitTextFillColor: '#fff'
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
+export const lightTheme = createTheme({
+  breakpoints: {
+    values: {
+      smLaptop: 768,
+      mdLaptop: 1024,
+      lgLaptop: 1440,
+      xlLaptop: 1920,
+      sxlLaptop: 2722
+    }
+  },
+  palette: {
+    common: {
+      black: '#000',
+      white: '#fff',
+      orange: '#E64A19',
+      yellow: '#FF8F00',
+      green: '#827717',
+      blue: '#3949AB',
+      purple: '#6A1B9A',
+      pink: '#880E4F'
+    },
+    mode: 'light',
+    primary: {
+      main: '#B71C1C',
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#f50057',
+      contrastText: '#fff'
+    },
+    error: {
+      main: '#f44336',
+      contrastText: '#fff'
+    },
+
+    text: {
+      primary: '#000',
+      secondary: '#9B9B9B',
+      disabled: 'lightgray',
+      hint: 'rgba(0, 0, 0, 0.38)',
+      drawerText: '#0F0F13',
+      iconColor: '#B9B9B9',
+      success: '#388E3C'
+    },
+    divider: '#999999',
+    background: {
+      paper: '#ffffff',
+      default: '#FFFFFF',
+      header: '#F2F3F7'
+    },
+    action: {
+      active: 'rgba(0, 0, 0, 0.54)',
+      hover: 'rgba(0, 0, 0, 0.08)',
+      hoverOpacity: 0.08,
+      selected: 'rgba(0, 0, 0, 0.14)',
+      disabled: 'gray',
+      disabledBackground: '#F12E39'
+    }
+  },
+  typography: {
+    display1: {
+      fontFamily: '"Oswald", sans-serif'
+    },
+    display2: {
+      fontFamily: '"Ubuntu", sans-serif'
+    },
+    display3: {
+      fontFamily: '"Courier New", monospace'
+    }
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: '"Courier New"';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('Raleway'), local('Raleway-Regular'), url(${Cour}) format('woff2');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&.Mui-disabled': {
+            border: '1px solid gray',
+            background: 'lightgray'
+          }
+        }
+      }
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          input: {
+            '&:-webkit-autofill': {
+              WebkitBoxShadow: '0 0 0 100px #fff inset',
+              WebkitTextFillColor: '#000'
+            }
+          }
+        }
+      }
+    }
+  }
+});
