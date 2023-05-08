@@ -44,11 +44,10 @@ const TabCards = () => {
             }}
           >
             {item.title.toUpperCase()}
-          </Typography>{' '}
+          </Typography>
           <Box
             sx={{
               backgroundColor: 'white',
-
               display: 'grid',
               placeItems: 'center',
               alignItems: 'center',
@@ -70,7 +69,7 @@ const TabCards = () => {
 
 export default TabCards;
 
-const TabBoxMain = styled(Box)(({ theme, selected }) => ({
+const TabBoxMain = styled(Box)(() => ({
   borderRadius: '12px',
   height: '175px',
   minWidth: '175px',
@@ -86,7 +85,6 @@ const TabBoxMain = styled(Box)(({ theme, selected }) => ({
 const IconWrapper = styled(Box)(({ theme }) => ({
   position: 'absolute',
   right: -8,
-
   bottom: -15,
   zIndex: 1
 }));

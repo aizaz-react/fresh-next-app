@@ -1,4 +1,4 @@
-import { Tab, Tabs, tabsClasses } from '@mui/material';
+import { Tab, Tabs, styled, tabsClasses } from '@mui/material';
 import React from 'react';
 
 const StyledTabs = ({ tabList, value, onChange }) => {
@@ -23,7 +23,7 @@ const StyledTabs = ({ tabList, value, onChange }) => {
       }}
     >
       {tabList.map((tab, index) => (
-        <Tab
+        <StyledTab
           key={index}
           label={tab.name}
           value={tab.name}
@@ -35,3 +35,13 @@ const StyledTabs = ({ tabList, value, onChange }) => {
 };
 
 export default StyledTabs;
+
+const StyledTab = styled(Tab)(({ theme }) => ({
+  ...theme.typography.display1,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '1rem'
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '.8rem'
+  }
+}));

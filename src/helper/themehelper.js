@@ -6,14 +6,9 @@ const { breakpoints } = createTheme();
 export const darkTheme = createTheme({
   breakpoints: {
     values: {
-      // smLaptop: 768,
-      // mdLaptop: 1024,
-      // lgLaptop: 1440,
-      // xlLaptop: 1920,
-      // sxlLaptop: 2722,
       xs: 320,
       sm: 475,
-      md: 768,
+      md: 769,
       lg: 1024
     }
   },
@@ -73,8 +68,7 @@ export const darkTheme = createTheme({
       fontWeight: 400,
       fontSize: '.9rem',
       lineHeight: '1.5em',
-
-      [breakpoints.down('sm')]: {
+      [breakpoints.down('xs')]: {
         fontSize: '.8rem'
       }
     },
@@ -92,8 +86,8 @@ export const darkTheme = createTheme({
         fontSize: '.7rem',
         lineHeight: '1.2em'
       },
-      [breakpoints.down('md')]: {
-        fontSize: '.7rem',
+      [breakpoints.between('sm', 'md')]: {
+        fontSize: '1rem',
         lineHeight: '1.3em'
       },
       [breakpoints.down('sm')]: {
@@ -119,6 +113,10 @@ export const darkTheme = createTheme({
       [breakpoints.down('lg')]: {
         fontSize: '3.5rem',
         lineHeight: '3.7rem'
+      },
+      [breakpoints.up('lg')]: {
+        fontSize: '4rem',
+        lineHeight: '4rem'
       },
       [breakpoints.down('md')]: {
         fontSize: '2.9rem',

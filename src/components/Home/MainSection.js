@@ -1,11 +1,8 @@
+import React from 'react';
 import { Box, Stack, Typography, styled, useMediaQuery } from '@mui/material';
-import React, { memo } from 'react';
 import { PrimaryButton } from '../core/styled/PrimaryButton';
-import Container from '../core/styled/Container';
-import { useTheme } from '@emotion/react';
 
 const MainSection = (props) => {
-  const theme = useTheme();
   const {
     title,
     description,
@@ -15,49 +12,52 @@ const MainSection = (props) => {
     direction,
     gap,
     textAlign,
-    desWidth,
-    titleWidth
+    titleWidth,
+    removePadding
   } = props;
   const matches = useMediaQuery('(max-width:768px)');
 
   return (
-    <Container>
-      <MainContent direction={direction} spacing={gap || 1} pt={'3rem'}>
-        <Stack
-          direction={'column'}
-          alignContent='center'
-          spacing={3}
-          sx={{ flex: 0.45 }}
+    <MainContent
+      direction={direction}
+      gap={gap || 1}
+      pt={removePadding ? '0rem' : '3rem'}
+    >
+      <Stack
+        direction={'column'}
+        alignContent='center'
+        spacing={3}
+        sx={{ flex: 0.45 }}
+      >
+        <MainHeading
+          component={'h3'}
+          sx={{
+            textAlign: matches ? 'center' : textAlign,
+            width: titleWidth || 'auto'
+          }}
         >
-          <MainHeading
-            sx={{
-              textAlign: matches ? 'center' : textAlign,
-              width: titleWidth || 'auto'
-            }}
-          >
-            {title || 'required title'}
-          </MainHeading>
-          <MainDescription
-            variant='display1'
-            sx={{
-              textAlign: matches ? 'center' : textAlign,
-              width: desWidth || 'auto',
-              alignSelf: textAlign
-            }}
-          >
-            {description}
-          </MainDescription>
-          {buttonText && (
-            <Box sx={{ alignSelf: matches ? 'center' : textAlign }}>
-              <PrimaryButton variant='contained' onClick={onClick}>
-                {buttonText}
-              </PrimaryButton>
-            </Box>
-          )}
-        </Stack>
-        {children}
-      </MainContent>
-    </Container>
+          {title || 'required title'}
+        </MainHeading>
+        <MainDescription
+          variant='display1'
+          component={'p'}
+          sx={{
+            textAlign: matches ? 'center' : textAlign,
+            alignSelf: textAlign
+          }}
+        >
+          {description}
+        </MainDescription>
+        {buttonText && (
+          <Box sx={{ alignSelf: matches ? 'center' : textAlign }}>
+            <PrimaryButton variant='contained' onClick={onClick}>
+              {buttonText}
+            </PrimaryButton>
+          </Box>
+        )}
+      </Stack>
+      {children}
+    </MainContent>
   );
 };
 
@@ -71,16 +71,15 @@ const MainDescription = styled(Typography)(({ theme }) => ({
   textTransform: 'uppercase',
 
   [theme.breakpoints.down('md')]: {
-    fontSize: '0.6rem'
+    width: '70%',
+    alignSelf: 'center'
   }
 }));
 const MainContent = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: '0.3rem !important'
+    textAlign: 'center'
+    // margin: '.8rem'
   }
-  // [theme.breakpoints.down('md')]: {
-  //   marginLeft: '1rem'
-  // }
 }));

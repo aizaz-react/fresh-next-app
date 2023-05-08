@@ -8,7 +8,7 @@ import { complextablist } from '@/components/core/constants';
 import { useState } from 'react';
 import Counters from '@/components/Counters';
 import TeamCard from '@/components/Home/TeamCard';
-import StyledContainer from '@/components/core/styled/Container';
+import Container from '@/components/core/styled/Container';
 import ControlledAccordions from '@/components/Home/Accordian';
 import OverPowerTeam from '@/components/Home/OverPowerTeam';
 import FlashHuntPlateform from '@/components/Home/FlashHuntPlateform';
@@ -20,32 +20,67 @@ export default function Home() {
 
   const matches = useMediaQuery('(max-width:768px)');
 
-  console.log(matches);
-
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
   return (
     <>
-      <NavBar />
       <BackgroundLayout sx={{ paddingBottom: '5rem' }}>
+        <NavBar />
+        <Container>
+          <MainSection
+            direction={'row'}
+            title={'Boost Your Cyber Risk Management Literally in Minutes'}
+            description={
+              'Easy deploy, manage, and scale your corporate cyber-risk managementwithout compromising.'
+            }
+            onClick={() => null}
+          >
+            <Box sx={{ flex: 0.5, display: 'grid', placeItems: 'center' }}>
+              <HeroSctionImg
+                component={'img'}
+                src={'/image/heroimg.png'}
+                alt='hello'
+                width={'100%'}
+                sx={{
+                  borderRadius: '25px',
+                  boxShadow: `3px 3px 1px 1px ${theme.palette.primary.main}`
+                }}
+              />
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '1.5rem'
+                }}
+              >
+                <PrimaryButton variant='contained'>LEARN MORE</PrimaryButton>
+              </Box>
+            </Box>
+          </MainSection>
+        </Container>
+      </BackgroundLayout>
+      <TabCards />
+      <Container>
         <MainSection
-          direction={'row'}
-          title={'Boost Your Cyber Risk Management Literally in Minutes'}
+          direction={'row-reverse'}
+          gap={5}
+          title={'Easily Build, Discover, and Triage Your Cyber Risk'}
           description={
-            'Easy deploy, manage, and scale your corporate cyber-risk managementwithout compromising.'
+            'Say goodbye to hours of workshops anddocumentation. Fully discover and understand your organization’s most critical systems forma single dashboard.'
           }
+          buttonText={'LEARN MORE'}
           onClick={() => null}
         >
-          <Box sx={{ flex: 0.5, display: 'grid', placeItems: 'center' }}>
-            <HeroSctionImg
+          <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
+            <HeroSction
               component={'img'}
-              src={'/image/heroimg.png'}
+              src={'/image/Mainsection.png'}
               alt='hello'
               width={'100%'}
               sx={{
-                borderRadius: '25px',
-                boxShadow: `3px 3px 1px 1px ${theme.palette.primary.main}`
+                borderRadius: '25px'
               }}
             />
 
@@ -55,199 +90,168 @@ export default function Home() {
                 justifyContent: 'center',
                 marginTop: '1.5rem'
               }}
-            >
-              <PrimaryButton variant='contained'>LEARN MORE</PrimaryButton>
-            </Box>
+            ></Box>
           </Box>
         </MainSection>
-      </BackgroundLayout>
-      <TabCards />
-      <MainSection
-        direction={'row-reverse'}
-        gap={5}
-        title={'Easily Build, Discover, and Triage Your Cyber Risk'}
-        description={
-          'Say goodbye to hours of workshops anddocumentation. Fully discover and understand your organization’s most critical systems forma single dashboard.'
-        }
-        buttonText={'LEARN MORE'}
-        onClick={() => null}
-      >
-        <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
-          <HeroSction
-            component={'img'}
-            src={'/image/Mainsection.png'}
-            alt='hello'
-            width={'100%'}
-            sx={{
-              borderRadius: '25px'
-            }}
-          />
-
+        <MainSection
+          direction={'row'}
+          title={'Lightning-Fast Deployment'}
+          description={`In just a few click, purchase, provision, and enable
+          comprehensive cyber risk management on-prem, in
+          the cloud, or anywhere in between.`}
+          buttonText={'LEARN MORE'}
+          onClick={() => null}
+        >
+          <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
+            <LightFixImg
+              component={'img'}
+              src={'/image/graph.png'}
+              alt='hello'
+              width={'100%'}
+              sx={{
+                borderRadius: '25px'
+              }}
+            />
+          </Box>
+        </MainSection>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          title={'Simplify the Complex with our World-Class Support'}
+          description={`In just a few click, purchase, provision, and enable
+          comprehensive cyber risk management on-prem, in
+          the cloud, or anywhere in between.`}
+          textaligin={'center'}
+          onClick={() => null}
+        >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '1.5rem'
+              bgcolor: 'background.default',
+              borderRadius: '10px',
+              padding: '1rem 3rem',
+              [theme.breakpoints.down('md')]: {
+                padding: '1rem 0.7rem'
+              }
             }}
-          ></Box>
-        </Box>
-      </MainSection>
-      <MainSection
-        direction={'row'}
-        title={'Lightning-Fast Deployment'}
-        description={`In just a few click, purchase, provision, and enable
-          comprehensive cyber risk management on-prem, in
-          the cloud, or anywhere in between.`}
-        buttonText={'LEARN MORE'}
-        onClick={() => null}
-      >
-        <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
-          <LightFixImg
-            component={'img'}
-            src={'/image/graph.png'}
-            alt='hello'
-            width={'100%'}
-            sx={{
-              borderRadius: '25px'
-            }}
-          />
-        </Box>
-      </MainSection>
-
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        desWidth='70%'
-        title={'Simplify the Complex with our World-Class Support'}
-        description={`In just a few click, purchase, provision, and enable
-          comprehensive cyber risk management on-prem, in
-          the cloud, or anywhere in between.`}
-        textaligin={'center'}
-        onClick={() => null}
-      >
-        <Box
-          sx={{
-            bgcolor: 'background.default',
-            borderRadius: '10px',
-            padding: '1rem 3rem',
-            [theme.breakpoints.down('md')]: {
-              padding: '1rem 0.7rem'
-            }
-          }}
-        >
-          <StyledTabs
-            value={value}
-            onChange={handleChange}
-            tabList={complextablist}
-          />
-          <MainSection
-            direction={'row'}
-            gap={5}
-            title={'Turnkey Vendor Management'}
-            description={` Maximize risk mitigation and minimize operational
+          >
+            <StyledTabs
+              value={value}
+              onChange={handleChange}
+              tabList={complextablist}
+            />
+            <MainSection
+              direction={'row'}
+              gap={5}
+              removePadding
+              title={'Turnkey Vendor Management'}
+              description={` Maximize risk mitigation and minimize operational
               impact by leveraging our team to contact, collect,
               and complete due diligence on vendors that provide
               technology to your organization.`}
-            buttonText={'LEARN MORE'}
+              buttonText={'LEARN MORE'}
+              onClick={() => null}
+            >
+              <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
+                <DiscoverBuildSection
+                  component={'img'}
+                  src={'/image/Mainsection.png'}
+                  alt='hello'
+                  width={'100%'}
+                  sx={{
+                    borderRadius: '25px',
+                    border: `3px solid ${theme.palette.primary.main}`,
+                    borderRight: 'none',
+                    marginLeft: '4rem',
+                    [theme.breakpoints.down('md')]: {
+                      marginLeft: '0.1rem !important'
+                    }
+                  }}
+                />
+              </Box>
+            </MainSection>
+          </Box>
+        </MainSection>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          title={'The Impact of Radical Simplicity'}
+          description={`as the attack surface of organizations grows --- with more environments and devices to protect and more tools
+        to manage, so grows complexity. this is what we call the cyber complexity trap and here’s how we defeat it.`}
+          textaligin={'center'}
+          onClick={() => null}
+        >
+          <Counters />
+        </MainSection>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          title={`From Manufacturing to healthcare,
+        Here’s Why Businesses choose 
+        Flashunt`}
+          description={`see how we help organizations achieve the peace of mind they deserve.`}
+          onClick={() => null}
+        >
+          <OPTConatinerWrapper>
+            <OverPowerTeam />
+          </OPTConatinerWrapper>
+        </MainSection>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          title={'The Latest and the Greatest'}
+          description={`News, updates and insights from our team.`}
+          textaligin={'center'}
+          onClick={() => null}
+        >
+          <TeamCard />
+        </MainSection>
+      </Container>
+      <Box sx={{ bgcolor: 'primary.main', pb: '3rem' }}>
+        <Container>
+          <MainSection
+            direction={'row'}
+            gap={5}
+            title={`SOC 2 Type 2,
+        GDPR, CPRA,
+        ITAR, NIST
+        800-171/53 and
+        ISO 27001`}
+            description={
+              'Say goodbye to hours of workshops anddocumentation. Fully discover and understand your organization’s most critical systems forma single dashboard.'
+            }
             onClick={() => null}
           >
             <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
-              <DiscoverBuildSection
+              <Box
                 component={'img'}
-                src={'/image/Mainsection.png'}
+                src={'/image/sector.png'}
                 alt='hello'
-                width={'100%'}
+                width={'70%'}
                 sx={{
                   borderRadius: '25px',
-                  border: `3px solid ${theme.palette.primary.main}`,
-                  borderRight: 'none',
-                  marginLeft: '4rem',
+
                   [theme.breakpoints.down('md')]: {
-                    marginLeft: '0.1rem !important'
+                    marginTop: '1rem'
                   }
                 }}
               />
             </Box>
           </MainSection>
-        </Box>
-      </MainSection>
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        title={'The Impact of Radical Simplicity'}
-        description={`as the attack surface of organizations grows --- with more environments and devices to protect and more tools
-        to manage, so grows complexity. this is what we call the cyber complexity trap and here’s how we defeat it.`}
-        textaligin={'center'}
-        onClick={() => null}
-      >
-        <Counters />
-      </MainSection>
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        title={`From Manufacturing to healthcare,
-        Here’s Why Businesses choose 
-        Flashunt`}
-        description={`see how we help organizations achieve the peace of mind they deserve.`}
-        onClick={() => null}
-      >
-        <OPTConatinerWrapper>
-          <OverPowerTeam />
-        </OPTConatinerWrapper>
-      </MainSection>
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        title={'The Latest and the Greatest'}
-        description={`News, updates and insights from our team.`}
-        textaligin={'center'}
-        onClick={() => null}
-      >
-        <TeamCard />
-      </MainSection>
-      <Box sx={{ bgcolor: 'primary.main', pb: '3rem' }}>
+        </Container>
+      </Box>
+      <Container>
         <MainSection
-          direction={'row'}
-          gap={5}
-          title={`SOC 2 Type 2,
-        GDPR, CPRA,
-        ITAR, NIST
-        800-171/53 and
-        ISO 27001`}
-          description={
-            'Say goodbye to hours of workshops anddocumentation. Fully discover and understand your organization’s most critical systems forma single dashboard.'
-          }
+          direction={'column'}
+          textAlign={'center'}
+          title={`FlasHunt: A Platform for Good`}
+          description={`an elegant solution to a complicated problem.`}
           onClick={() => null}
         >
-          <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
-            <Box
-              component={'img'}
-              src={'/image/sector.png'}
-              alt='hello'
-              width={'70%'}
-              sx={{
-                borderRadius: '25px',
-
-                [theme.breakpoints.down('md')]: {
-                  marginTop: '1rem'
-                }
-              }}
-            />
-          </Box>
+          <FlashHuntPlateform />
         </MainSection>
-      </Box>
+      </Container>
 
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        title={`FlasHunt: A Platform for Good`}
-        description={`an elegant solution to a complicated problem.`}
-        onClick={() => null}
-      >
-        <FlashHuntPlateform />
-      </MainSection>
-
-      <StyledContainer
+      <Container
         sx={{
           padding: '1rem 10rem',
           [theme.breakpoints.down('lg')]: {
@@ -268,36 +272,38 @@ export default function Home() {
           alt='hello'
           width={'100%'}
         />
-      </StyledContainer>
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        titleWidth='98%'
-        gap={5}
-        title={'Our Mission is Ensuring your Mission'}
-        description={'solutions for your industry:'}
-        onClick={() => null}
-      >
-        <AccordianWrapper>
-          <ControlledAccordions />
-        </AccordianWrapper>
-      </MainSection>
+      </Container>
+      <Container>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          titleWidth='98%'
+          gap={5}
+          title={'Our Mission is Ensuring your Mission'}
+          description={'solutions for your industry:'}
+          onClick={() => null}
+        >
+          <AccordianWrapper>
+            <ControlledAccordions />
+          </AccordianWrapper>
+        </MainSection>
 
-      <MainSection
-        direction={'column'}
-        textAlign={'center'}
-        gap={5}
-        title={'Easily Build, Discover, and Triage Your Cyber Risk'}
-        buttonText={'Get Started'}
-        onClick={() => null}
-      >
-        <Box
-          component={'img'}
-          src={'/image/footerimg.png'}
-          alt='hello'
-          width={'100%'}
-        />
-      </MainSection>
+        <MainSection
+          direction={'column'}
+          textAlign={'center'}
+          gap={5}
+          title={'Easily Build, Discover, and Triage Your Cyber Risk'}
+          buttonText={'Get Started'}
+          onClick={() => null}
+        >
+          <Box
+            component={'img'}
+            src={'/image/footerimg.png'}
+            alt='hello'
+            width={'100%'}
+          />
+        </MainSection>
+      </Container>
 
       <Footer />
     </>

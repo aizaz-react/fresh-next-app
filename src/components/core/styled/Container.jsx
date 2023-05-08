@@ -1,7 +1,9 @@
-import { Container, styled } from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 
-const StyledContainer = styled(Container)(() => ({
-  maxWidth: '1200px'
+const StyledContainer = styled(Box)(() => ({
+  maxWidth: '1200px',
+  margin: '0 auto',
+  padding: '1rem'
 }));
 
 export default StyledContainer;
