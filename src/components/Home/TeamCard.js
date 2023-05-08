@@ -74,10 +74,11 @@ const TeamCard = () => {
 };
 
 export default memo(TeamCard);
-const TabBoxMain = styled(Box)(({ theme, selected }) => ({
+const TabBoxMain = styled(Box)(({ theme }) => ({
   borderRadius: '12px',
   padding: '2rem 2rem',
   overflow: 'hidden',
+  flex: '1 1 250px',
   [theme.breakpoints.down('lg')]: {
     padding: '1.5rem 1.5rem'
   },
@@ -87,19 +88,9 @@ const TabBoxMain = styled(Box)(({ theme, selected }) => ({
 }));
 
 const CardList = styled(StyledContainer)(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gridTemplateRows: 'min-content',
-  gap: '0.5rem',
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '1rem',
   overflow: 'auto',
-  padding: '6.5rem 5rem',
-  [theme.breakpoints.down('lg')]: {
-    gridTemplateColumns: '1fr 1fr 1fr',
-    padding: '3.5rem 1rem',
-    gap: '0.7rem'
-  },
-  [theme.breakpoints.down('md')]: {
-    padding: '2.5rem 0.5rem',
-    gridTemplateColumns: '1fr '
-  }
+  padding: '2rem 5rem'
 }));

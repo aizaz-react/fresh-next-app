@@ -31,7 +31,7 @@ const OverPowerTeam = () => {
             verpower
           </Typography>
         </StackRow>
-        <Typography
+        <Description
           variant='display3'
           sx={{ fontSize: '0.9rem', fontWeight: 400 }}
         >
@@ -39,9 +39,9 @@ const OverPowerTeam = () => {
           been absolutely superb. We have over 1000 employees who all work in a
           hybrid environment across the Midwest. With FlasHunt, we are confident
           we can make the best use of our resources and secure our organization.
-        </Typography>
+        </Description>
         <Stack sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography
+          <Title
             variant='display1'
             sx={{
               fontSize: '1.8rem',
@@ -50,19 +50,19 @@ const OverPowerTeam = () => {
             }}
           >
             JIM MCLARTY
-          </Typography>
-          <Typography
-            variant='display3'
-            sx={{ fontSize: '0.9rem', fontWeight: 400, lineHeight: '1.7rem' }}
+          </Title>
+          <Description
+
+          // sx={{ fontSize: '0.9rem', fontWeight: 400, lineHeight: '1.7rem' }}
           >
             CISO, Independent
-          </Typography>
-          <Typography
-            variant='display3'
-            sx={{ fontSize: '0.9rem', fontWeight: 400 }}
+          </Description>
+          <Description
+          // variant='display3'
+          // sx={{ fontSize: '0.9rem', fontWeight: 400 }}
           >
             Banking Corporation
-          </Typography>
+          </Description>
         </Stack>
       </LeftSection>
       <RightSection spacing={3} direction={'column'}>
@@ -131,5 +131,22 @@ const ContainerWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     width: '30%'
+  }
+}));
+
+const Title = styled(Typography)(({ theme }) => ({
+  ...theme.typography.display1,
+  fontSize: '1.8rem',
+  fontWeight: 500,
+  lineHeight: '1.7rem',
+  [theme.breakpoints.down('md')]: {
+    textAlign: 'left'
+  }
+}));
+
+const Description = styled(Typography)(({ theme }) => ({
+  ...theme.typography.display3,
+  [theme.breakpoints.down('md')]: {
+    textAlign: 'left'
   }
 }));

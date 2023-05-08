@@ -1,11 +1,27 @@
 import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
+import MuiAccordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useTheme } from '@emotion/react';
+import { styled } from '@mui/material';
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `none`,
+  '&:not(:last-child)': {
+    borderBottom: 0
+  },
+  '&:before': {
+    display: 'none'
+  },
+  borderRadius: '15px',
+  marginTop: '1rem',
+  backgroundColor: theme.palette.primary.footer
+}));
 
 const ControlledAccordions = () => {
   const AccordianData = [
@@ -61,12 +77,7 @@ const ControlledAccordions = () => {
           onChange={handleChange(index)}
           key={index}
           sx={{
-            bgcolor: expanded === index && 'primary.main',
-            borderRadius: '15px',
-            marginTop: '1rem',
-            '& .MuiPaper-root-MuiAccordion-root:before': {
-              backgroundColor: 'red !important'
-            }
+            bgcolor: expanded === index && 'primary.main'
           }}
         >
           <AccordionSummary
@@ -85,6 +96,7 @@ const ControlledAccordions = () => {
               sx={{
                 width: '33%',
                 flexShrink: 0,
+                textAlign: 'left',
                 [theme.breakpoints.down('lg')]: {
                   fontSize: '1.1rem'
                 },

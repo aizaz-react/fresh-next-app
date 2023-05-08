@@ -273,7 +273,7 @@ export default function Home() {
           width={'100%'}
         />
       </Container>
-      <Container>
+      <Container sx={{ padding: '0rem 1rem' }}>
         <MainSection
           direction={'column'}
           textAlign={'center'}

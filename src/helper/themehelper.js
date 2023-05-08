@@ -76,7 +76,7 @@ export const darkTheme = createTheme({
       fontFamily: '"Oswald", sans-serif',
       fontStyle: 'normal',
       fontWeight: 400,
-      fontSize: '.9rem',
+      fontSize: '1rem',
       lineHeight: '1.5em',
       [breakpoints.down('lg')]: {
         fontSize: '.8rem',

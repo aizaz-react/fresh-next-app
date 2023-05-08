@@ -39,7 +39,6 @@ const MainSection = (props) => {
           {title || 'required title'}
         </MainHeading>
         <MainDescription
-          variant='display1'
           component={'p'}
           sx={{
             textAlign: matches ? 'center' : textAlign,

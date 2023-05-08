@@ -150,26 +150,16 @@ const FlashHuntPlateform = () => {
 };
 
 export default FlashHuntPlateform;
-const MainContainer = styled(Box)(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gridTemplateRows: 'min-content',
-  gap: '1rem',
-  [theme.breakpoints.down('lg')]: {
-    gridTemplateColumns: '1fr 1fr ',
-    gap: '0.7rem'
-  },
-  [theme.breakpoints.down('md')]: {
-    gridTemplateColumns: '1fr',
-    gap: '0.7rem'
-  }
+const MainContainer = styled(Box)(() => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '1rem'
 }));
 
 const MainSection = styled(Stack)(({ theme }) => ({
   padding: '1.5rem',
-
   borderRadius: '15px',
-
+  flex: '1 1 250px',
   height: '320px',
   justifyContent: 'space-between'
 }));
