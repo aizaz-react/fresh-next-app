@@ -115,10 +115,10 @@ export const darkTheme = createTheme({
       fontStyle: 'normal',
       fontWeight: 500,
       fontSize: '3.5rem',
-      lineHeight: '4.5rem',
+      lineHeight: '4rem',
       [breakpoints.down('lg')]: {
         fontSize: '3.5rem',
-        lineHeight: '4rem'
+        lineHeight: '3.7rem'
       },
       [breakpoints.down('md')]: {
         fontSize: '2.9rem',

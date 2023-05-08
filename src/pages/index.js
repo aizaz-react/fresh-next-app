@@ -129,7 +129,10 @@ export default function Home() {
           sx={{
             bgcolor: 'background.default',
             borderRadius: '10px',
-            padding: '1rem 3rem'
+            padding: '1rem 3rem',
+            [theme.breakpoints.down('md')]: {
+              padding: '1rem 0.7rem'
+            }
           }}
         >
           <StyledTabs
@@ -157,7 +160,11 @@ export default function Home() {
                 sx={{
                   borderRadius: '25px',
                   border: `3px solid ${theme.palette.primary.main}`,
-                  borderRight: 'none'
+                  borderRight: 'none',
+                  marginLeft: '4rem',
+                  [theme.breakpoints.down('md')]: {
+                    marginLeft: '0.1rem !important'
+                  }
                 }}
               />
             </Box>
@@ -237,9 +244,7 @@ export default function Home() {
         description={`an elegant solution to a complicated problem.`}
         onClick={() => null}
       >
-        <Box>
-          <FlashHuntPlateform />
-        </Box>
+        <FlashHuntPlateform />
       </MainSection>
 
       <StyledContainer

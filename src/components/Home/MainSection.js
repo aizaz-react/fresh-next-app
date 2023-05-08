@@ -45,7 +45,7 @@ const MainSection = (props) => {
               alignSelf: textAlign
             }}
           >
-            {description || 'required description'}
+            {description}
           </MainDescription>
           {buttonText && (
             <Box sx={{ alignSelf: matches ? 'center' : textAlign }}>
@@ -68,15 +68,19 @@ const MainHeading = styled(Typography)(({ theme }) => ({
 }));
 const MainDescription = styled(Typography)(({ theme }) => ({
   ...theme.typography.display1Description,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: '0.6rem'
+  }
 }));
 const MainContent = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: '2rem'
-  },
-  [theme.breakpoints.down('md')]: {
-    marginLeft: '1rem'
+    marginLeft: '0.3rem !important'
   }
+  // [theme.breakpoints.down('md')]: {
+  //   marginLeft: '1rem'
+  // }
 }));

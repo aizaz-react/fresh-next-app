@@ -95,7 +95,8 @@ const CardList = styled(StyledContainer)(({ theme }) => ({
   padding: '6.5rem 5rem',
   [theme.breakpoints.down('lg')]: {
     gridTemplateColumns: '1fr 1fr 1fr',
-    padding: '3.5rem 1rem'
+    padding: '3.5rem 1rem',
+    gap: '0.7rem'
   },
   [theme.breakpoints.down('md')]: {
     padding: '2.5rem 0.5rem',
