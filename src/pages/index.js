@@ -18,11 +18,10 @@ export default function Home() {
   const theme = useTheme();
   const [value, setValue] = useState(complextablist[0].name);
 
-  const matches = useMediaQuery('(max-width:768px)');
-
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
+
   return (
     <>
       <BackgroundLayout sx={{ paddingBottom: '5rem' }}>
