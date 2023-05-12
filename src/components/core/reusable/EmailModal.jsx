@@ -9,7 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Logo from '@/assets/custom/Logo';
 import Typography from '@mui/material/Typography';
 
-import { Box, InputBase, Stack } from '@mui/material';
+import { Box, InputBase, Stack, useMediaQuery } from '@mui/material';
 import { PrimaryButton } from '../styled/PrimaryButton';
 import { useTheme } from '@emotion/react';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -21,7 +21,11 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
   '& .MuiDialog-paper': {
     minWidth: '600px',
-    padding: '2rem 1rem'
+    padding: '2rem 1rem',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: '300px !important',
+      padding: '2rem 0.5rem'
+    }
   },
   '& .MuiDialogActions-root': {
     justifyContent: 'center',
@@ -61,11 +65,20 @@ BootstrapDialogTitle.propTypes = {
 const EmailModal = (props) => {
   const { open, handleClose } = props;
   const theme = useTheme();
+
   return (
     <BootstrapDialog onClose={handleClose} open={open}>
       <StackRow>
         <Logo />
-        <Typography variant='display2' sx={{ fontSize: '1.2rem' }}>
+        <Typography
+          variant='display2'
+          sx={{
+            fontSize: '1.2rem',
+            [theme.breakpoints.down('sm')]: {
+              fontSize: '0.9rem'
+            }
+          }}
+        >
           verPower
         </Typography>
       </StackRow>
@@ -88,11 +101,13 @@ const EmailModal = (props) => {
             },
             [theme.breakpoints.down('sm')]: {
               fontSize: '1rem',
-              padding: '0rem 7rem'
+              padding: '0rem 4rem',
+              gap: '0.5rem !important',
+              lineHeight: '1rem'
             }
           }}
         >
-          Join a 15-Minut e Demo!
+          Join a 15-Minute Demo!
         </Typography>
         <br />
         <Typography
@@ -108,12 +123,13 @@ const EmailModal = (props) => {
             justifyContent: 'center',
             [theme.breakpoints.down('sm')]: {
               fontSize: '0.9rem',
-              padding: '0rem 7rem',
-              marginTop: '-1rem'
+              padding: '0rem 3.2rem',
+              marginTop: '-1rem',
+              lineHeight: '1.2rem'
             }
           }}
         >
-          Learn how to easy FlasHunt puts you in control of your Cyber-Risk
+          Learn how easily FlasHunt puts you in control of your Cyber-Risk
         </Typography>
       </BootstrapDialogTitle>
       <Stack
@@ -138,6 +154,12 @@ const EmailModal = (props) => {
               display: 'flex',
               flexWrap: 'wrap',
               flexDirection: 'column',
+              marginLeft: '0px !important'
+            },
+            [theme.breakpoints.down('md')]: {
+              display: 'flex',
+              flexWrap: 'wrap',
+              flexDirection: 'column',
               marginLeft: '0px !important',
               gap: '1rem'
             }
@@ -153,7 +175,7 @@ const EmailModal = (props) => {
             }}
           />
         </Stack>
-        <Input placeholder='work Email' />
+        <Input placeholder='Work Email' />
         <Input placeholder='Company Name' />
         <Input placeholder='Comapny Size' />
         <Input placeholder='Role' />
@@ -170,6 +192,9 @@ const EmailModal = (props) => {
             width: '76%',
             [theme.breakpoints.down('md')]: {
               width: '40%'
+            },
+            [theme.breakpoints.down('sm')]: {
+              width: '94%'
             }
           }}
         >
@@ -181,10 +206,13 @@ const EmailModal = (props) => {
 };
 export default EmailModal;
 
-const StackRow = styled(Stack)(({ open }) => ({
+const StackRow = styled(Stack)(({ open, theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  [theme.breakpoints.down('sm')]: {
+    height: '1rem !important'
+  }
 }));
 
 const Input = styled(InputBase)(({ theme }) => ({
@@ -192,5 +220,8 @@ const Input = styled(InputBase)(({ theme }) => ({
   border: '1px solid gray',
   borderRadius: '5px',
   padding: '0.2rem .4rem',
-  fontSize: '1rem'
+  fontSize: '1rem',
+  [theme.breakpoints.down('sm')]: {
+    minWidth: '15rem'
+  }
 }));

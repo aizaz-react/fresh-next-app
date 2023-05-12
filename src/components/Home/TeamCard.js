@@ -1,12 +1,15 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 import { Box, Stack, styled, Typography, useTheme } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import StyledContainer from '../core/styled/Container';
-import DownloadIcon from '@/assets/custom/downlod';
-import SearchIcon from '@/assets/custom/search';
-import YoutubeIcon from '@/assets/custom/youtube';
+import DownloadIcon from '@/assets/custom/DownlodIcon';
+import SearchIcon from '@/assets/custom/SearchIcon';
+import YoutubeIcon from '@/assets/custom/YoutubeIcon';
+import EmailModal from '../core/reusable/EmailModal';
+import Popup from '../core/reusable/Popup';
+
 const cardData = [
   {
     icon: <YoutubeIcon size='5rem' />,
@@ -35,9 +38,17 @@ const cardData = [
 ];
 const TeamCard = () => {
   const theme = useTheme();
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleClickOpen = () => {
+    setModalOpen(true);
+  };
+  const handleClose = () => {
+    setModalOpen(false);
+  };
   return (
     <>
       <CardList>
+        <Popup open={modalOpen} handleClose={handleClose} />
         {cardData.map((item, index) => (
           <TabBoxMain
             sx={{ bgcolor: 'background.default', border: '2px solid #B71C1C' }}
@@ -69,9 +80,15 @@ const TeamCard = () => {
               <Typography
                 variant='display1'
                 sx={{
-                  fontSize: '1rem',
+                  fontSize: '1.4rem',
                   fontWeight: 500,
-                  textTransform: 'capitalize'
+                  textTransform: 'capitalize',
+                  [theme.breakpoints.down('md')]: {
+                    fontSize: '1rem'
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    fontSize: '0.7rem'
+                  }
                 }}
               >
                 {item.desc}
@@ -80,6 +97,7 @@ const TeamCard = () => {
                 sx={{
                   display: 'flex',
                   marginTop: '1rem',
+                  alignItems: 'center',
                   [theme.breakpoints.down('sm')]: {
                     display: 'flex',
                     justifyContent: 'center'
@@ -88,13 +106,21 @@ const TeamCard = () => {
               >
                 <Typography
                   variant='display3'
-                  sx={{ fontSize: '1rem', fontWeight: 500, color: '#B71C1C' }}
+                  sx={{
+                    fontSize: '1.4rem',
+                    fontWeight: 500,
+                    color: '#B71C1C',
+                    [theme.breakpoints.down('md')]: {
+                      fontSize: '1.2rem'
+                    }
+                  }}
                 >
                   {item.title.toUpperCase()}
                 </Typography>
 
                 <ArrowForwardIcon
                   sx={{ color: '#B71C1C', fontSize: '1rem', cursor: 'pointer' }}
+                  onClick={handleClickOpen}
                 />
               </Box>
             </Stack>

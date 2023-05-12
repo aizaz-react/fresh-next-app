@@ -3,7 +3,8 @@ import { Stack } from '@mui/system';
 import React, { useState } from 'react';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useTheme } from '@emotion/react';
-import EmailModal from '../core/reusable/EmailModal';
+
+import Popup from '../core/reusable/Popup';
 const FlashHuntPlateform = () => {
   const theme = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
@@ -91,24 +92,28 @@ const FlashHuntPlateform = () => {
   ];
   return (
     <MainContainer>
-      <EmailModal open={modalOpen} handleClose={handleClose} />
+      <Popup open={modalOpen} handleClose={handleClose} />
 
       {FlashHunt.map((item, index) => (
         <MainSection
           key={index}
-          sx={{ border: ` 2px solid ${item.bordercolor}` }}
+          sx={{ border: ` 3px solid ${item.bordercolor}` }}
         >
           <Description
             variant='display1'
             component={'p'}
             sx={{
               fontWeight: 300,
-              lineHeight: '1.8rem',
+              lineHeight: '2rem',
+              fontSize: '1.5rem',
               [theme.breakpoints.down('lg')]: {
-                fontSize: '1rem'
+                fontSize: '1.4rem',
+                lineHeight: '1.8rem'
               },
               [theme.breakpoints.down('md')]: {
-                fontSize: '0.9rem'
+                fontSize: '1.2rem',
+                lineHeight: '1.8rem',
+                textAlign: 'initial'
               },
               [theme.breakpoints.down('sm')]: {
                 fontSize: '0.9rem',
@@ -124,8 +129,12 @@ const FlashHuntPlateform = () => {
               variant='display2'
               component={'h3'}
               sx={{
+                fontSize: '2.5rem',
+                fontWeight: 500,
+                lineHeight: '2.5rem',
                 [theme.breakpoints.down('md')]: {
-                  fontSize: '1.4rem'
+                  fontSize: '1.4rem',
+                  textAlign: 'initial'
                 },
                 [theme.breakpoints.down('sm')]: {
                   fontSize: '1.3rem',
@@ -139,19 +148,23 @@ const FlashHuntPlateform = () => {
             <Box
               sx={{
                 display: 'flex',
-                marginTop: '1rem'
+                marginTop: '1rem',
+                alignItems: 'center'
               }}
             >
               <Typography
                 variant='display3'
                 sx={{
-                  fontSize: '1rem',
+                  fontSize: '1.5rem',
                   fontWeight: 500,
                   color: '#B71C1C',
+                  cursor: 'pointer',
+
                   [theme.breakpoints.down('md')]: {
                     fontSize: '1rem'
                   }
                 }}
+                onClick={handleClickOpen}
               >
                 GET IT NOW
               </Typography>
@@ -172,7 +185,8 @@ export default FlashHuntPlateform;
 const MainContainer = styled(Box)(() => ({
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '1rem'
+  gap: '1rem',
+  marginTop: '1rem'
 }));
 
 const MainSection = styled(Stack)(({ theme }) => ({

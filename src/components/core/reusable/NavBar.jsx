@@ -5,24 +5,27 @@ import {
   Box,
   styled,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Slide
 } from '@mui/material';
+import { Link } from '@mui/material';
 import React, { useState } from 'react';
 import { PrimaryButton } from '../styled/PrimaryButton';
 import Container from '../styled/Container';
-import Link from 'next/link';
+
 import EmailModal from './EmailModal';
+import FullScreenDialog from './Popup';
 
 const navlinks = [
   { name: 'Platform', path: '', id: 1 },
-  { name: 'Solutions', path: '', id: 1 },
-  { name: 'Support', path: '', id: 1 },
-  { name: 'Login', path: '', id: 1 }
+  { name: 'Solutions', path: '', id: 2 },
+  { name: 'Support', path: '', id: 3 },
+  { name: 'Login', path: '', id: 4 }
 ];
 
-const NavBar = () => {
+const NavBar = (props) => {
   const { breakpoints } = useTheme();
-
+  const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const toggle = (e) => setOpen(e.target.checked);
@@ -34,6 +37,11 @@ const NavBar = () => {
   const handleClickOpen = () => {
     setModalOpen(true);
   };
+
+  const handleClick = (id) => {
+    props.onMessage(id);
+  };
+
   const handleClose = () => {
     setModalOpen(false);
   };
@@ -47,8 +55,20 @@ const NavBar = () => {
     >
       <StackRow justifyContent={'space-between'} py={1}>
         <StackRow>
-          <Logo size={matches ? '1rem' : '3rem'} />
-          <Typography variant='display2' sx={{ fontSize: '1.2rem' }}>
+          <Logo size={matches ? '1rem' : '2rem'} />
+          <Typography
+            variant='display2'
+            sx={{
+              fontSize: '1.2rem',
+              transition: '.3s all',
+              [theme.breakpoints.down('md')]: {
+                fontSize: '0.9rem'
+              },
+              [theme.breakpoints.down('sm')]: {
+                fontSize: '0.9rem'
+              }
+            }}
+          >
             verPower
           </Typography>
         </StackRow>
@@ -62,11 +82,33 @@ const NavBar = () => {
           }}
           gap={'1rem'}
         >
-          {navlinks.map(({ name }, index) => (
-            <NavLink variant='display1' key={index} sx={{}}>
-              {name}
-            </NavLink>
-          ))}
+          {navlinks.map((item, index) =>
+            item?.id == '4' ? (
+              <Link
+                variant='display1'
+                key={index}
+                sx={{
+                  cursor: 'pointer',
+                  fontSize: '1.2rem',
+                  textDecoration: 'none',
+                  color: 'white',
+                  fontWeight: 500
+                }}
+                href='https://consoleoverpowerai-frontend-stag-dot-overwatch-313620.uc.r.appspot.com/'
+              >
+                {item?.name}
+              </Link>
+            ) : (
+              <NavLink
+                variant='display1'
+                key={index}
+                sx={{ cursor: 'pointer' }}
+                onClick={() => handleClick(item?.id)}
+              >
+                {item?.name}
+              </NavLink>
+            )
+          )}
         </StackRow>
         <Box
           sx={{
@@ -95,7 +137,7 @@ const NavBar = () => {
             <UlBox component={'ul'}>
               {navlinks.map(({ name, path, id }, idx) => (
                 <StyledLink component={'li'} key={idx}>
-                  <Link key={id} href={`/${path}`}>
+                  <Link key={id} onClick={() => handleClick(id)}>
                     {name}
                   </Link>
                 </StyledLink>
@@ -109,20 +151,21 @@ const NavBar = () => {
                 }
               }}
               variant='contained'
+              onClick={handleClickOpen}
             >
               Request Demo
             </PrimaryButton>
           </DropDown>
         </Label>
       </StackRow>
-      <EmailModal open={modalOpen} handleClose={handleClose} />
+      <FullScreenDialog open={modalOpen} handleClose={handleClose} />
     </Container>
   );
 };
 
 export default NavBar;
 
-const StackRow = styled(Stack)(({ open }) => ({
+const StackRow = styled(Stack)(({ open, theme }) => ({
   flexDirection: 'row',
   alignItems: 'center'
 }));

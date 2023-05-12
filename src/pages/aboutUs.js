@@ -9,7 +9,6 @@ export default function AboutUs() {
   return (
     <>
       <h1>hello world about</h1>
-      <h1>hello world about</h1>
     </>
   );
 }

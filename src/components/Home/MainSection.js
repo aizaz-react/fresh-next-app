@@ -1,5 +1,12 @@
 import React from 'react';
-import { Box, Stack, Typography, styled, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Stack,
+  Typography,
+  styled,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { PrimaryButton } from '../core/styled/PrimaryButton';
 import EmailModal from '../core/reusable/EmailModal';
 
@@ -20,13 +27,16 @@ const MainSection = (props) => {
     lescDec
   } = props;
   const matches = useMediaQuery('(max-width:768px)');
+  const theme = useTheme();
 
   return (
     <MainContent
       direction={direction}
       gap={gap || 1}
       pt={removePadding ? '0rem' : '3rem'}
-      sx={{ ...layoutStyle }}
+      sx={{
+        ...layoutStyle
+      }}
     >
       <Stack
         direction={'column'}

@@ -61,7 +61,18 @@ const OverPowerTeam = () => {
         </StackRow>
         <Description
           variant='display3'
-          sx={{ fontSize: '0.9rem', fontWeight: 400 }}
+          sx={{
+            fontSize: '1.1rem',
+            fontWeight: 400,
+            lineHeight: '1.2rem',
+            marginBottom: '1rem',
+
+            [theme.breakpoints.down('md')]: {
+              fontSize: '0.8rem',
+
+              lineHeight: '1rem'
+            }
+          }}
         >
           {officerObj[selectedValue].disc}
         </Description>
@@ -184,6 +195,7 @@ const Title = styled(Typography)(({ theme }) => ({
 
 const Description = styled(Typography)(({ theme }) => ({
   ...theme.typography.display3,
+
   [theme.breakpoints.down('md')]: {
     textAlign: 'justify'
   }

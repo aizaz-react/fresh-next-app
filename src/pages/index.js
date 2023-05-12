@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import NavBar from '@/components/core/reusable/NavBar';
 import { Box, useTheme, styled, useMediaQuery } from '@mui/material';
 import MainSection from '@/components/Home/MainSection';
@@ -14,17 +14,46 @@ import OverPowerTeam from '@/components/Home/OverPowerTeam';
 import FlashHuntPlateform from '@/components/Home/FlashHuntPlateform';
 import Footer from '@/components/Home/Footer';
 import Head from 'next/head';
-import EmailModal from '@/components/core/reusable/EmailModal';
+import Link from 'next/link';
+import Slide from '@mui/material/Slide';
+import Popup from '@/components/core/reusable/Popup';
 
 export default function Home() {
   const theme = useTheme();
   const [value, setValue] = useState(complextablist[0].name);
-
+  const [message, setMessage] = useState('');
+  const myRef1 = useRef(null);
+  const myRef2 = useRef(null);
+  const myRef3 = useRef(null);
+  const myRef4 = useRef(null);
+  console.log('message', message);
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
 
   const [modalOpen, setModalOpen] = useState(false);
+  useEffect(() => {
+    console.log('my ref is this', message);
+
+    if (message == '1') {
+      myRef1.current.scrollIntoView({ behavior: 'smooth' });
+      setMessage('');
+    } else if (message == '2') {
+      myRef2.current.scrollIntoView({ behavior: 'smooth' });
+      setMessage('');
+    } else if (message == '3') {
+      myRef3.current.scrollIntoView({ behavior: 'smooth' });
+
+      setMessage('');
+    } else if (message == '4') {
+      myRef4.current.scrollIntoView({ behavior: 'smooth' });
+      setMessage('');
+    }
+  }, [message]);
+
+  const handleMessageFromChild = (childMessage) => {
+    setMessage(childMessage);
+  };
 
   const handleClickOpen = () => {
     console.log('hello');
@@ -37,28 +66,12 @@ export default function Home() {
   return (
     <Box sx={{ background: 'black' }}>
       {/* Modals */}
-      <EmailModal open={modalOpen} handleClose={handleClose} />
+      <Popup open={modalOpen} handleClose={handleClose} />
 
       {/* Body */}
       <Head>
         <title>OverPower</title>
         <link rel='icon' type='image/x-icon' href='/image/header.png' />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Oswald&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/icon?family=Material+Icons'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap'
-          rel='stylesheet'
-        />
       </Head>
       <BackgroundLayout
         sx={{
@@ -68,7 +81,7 @@ export default function Home() {
           }
         }}
       >
-        <NavBar />
+        <NavBar onMessage={handleMessageFromChild} />
         <Container>
           <MainSection
             direction={'row'}
@@ -76,6 +89,7 @@ export default function Home() {
             description={
               'Easily deploy, manage, and scale your corporate cyber-risk management without compromising.'
             }
+            layoutStyle={{ marginTop: '0rem !imortant' }}
             onClick={handleClickOpen}
           >
             <Box sx={{ flex: 0.5, display: 'grid', placeItems: 'center' }}>
@@ -105,17 +119,36 @@ export default function Home() {
           </MainSection>
         </Container>
       </BackgroundLayout>
-
-      <TabCards />
-
+      <Box
+        sx={{
+          marginTop: '3.5rem',
+          [theme.breakpoints.down('md')]: {
+            marginTop: '3rem'
+          },
+          [theme.breakpoints.down('sm')]: {
+            marginTop: '2rem'
+          }
+        }}
+      >
+        <TabCards />
+      </Box>
       <Container>
         <MainSection
           direction={'row-reverse'}
           gap={5}
           title={'Easily Build, Discover, and Triage Your Cyber Risk'}
           description={
-            'Say goodbye to hours of workshops anddocumentation. Fully discover and understand your organization’s most critical systems forma single dashboard.'
+            'Say goodbye to hours of workshops and documentation. Fully discover and understand your organization’s most critical systems form a single dashboard.'
           }
+          layoutStyle={{
+            marginTop: '4rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
           buttonText={'LEARN MORE'}
           onClick={handleClickOpen}
         >
@@ -147,6 +180,15 @@ export default function Home() {
           the cloud, or anywhere in between.`}
           buttonText={'LEARN MORE'}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '4rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
             <LightFixImg
@@ -160,75 +202,88 @@ export default function Home() {
             />
           </Box>
         </MainSection>
-        <MainSection
-          direction={'column'}
-          textAlign={'center'}
-          title={'Simplify the Complex with our World-Class Support'}
-          description={
-            'Turnkey Services from our dedicated 24/7/365  US-Based team will ensure that your organization can handle the unexpected.'
-          }
-          textaligin={'center'}
-          onClick={handleClickOpen}
-        >
-          <Box
-            sx={{
-              bgcolor: 'background.default',
-              borderRadius: '10px',
-              padding: '1rem 3rem',
+        <Container ref={myRef3}>
+          <MainSection
+            direction={'column'}
+            textAlign={'center'}
+            title={'Simplify the Complex with our World-Class Support'}
+            description={
+              'Turnkey Services from our dedicated 24/7/365  US-Based team will ensure that your organization can handle the unexpected.'
+            }
+            layoutStyle={{
+              marginTop: '3.8rem',
+
               [theme.breakpoints.down('md')]: {
-                padding: '1rem 0.7rem'
+                marginTop: '3rem'
               },
               [theme.breakpoints.down('sm')]: {
-                marginTop: '1rem',
-                padding: '0.3rem 0.69rem 1rem 0.7rem'
+                marginTop: '2rem'
               }
             }}
+            textaligin={'center'}
+            onClick={handleClickOpen}
           >
-            <StyledTabs
-              value={value}
-              onChange={handleChange}
-              tabList={complextablist}
-            />
-            <MainSection
-              direction={'row'}
-              gap={5}
-              removePadding
-              layoutStyle={{
-                marginTop: '3rem',
-                paddingBottom: '1.5rem',
+            <Box
+              sx={{
+                bgcolor: 'background.default',
+                borderRadius: '10px',
+                padding: '1rem 3rem',
+                marginTop: '1rem',
                 [theme.breakpoints.down('md')]: {
-                  marginTop: '2rem'
+                  padding: '1rem 0.7rem'
                 },
                 [theme.breakpoints.down('sm')]: {
-                  marginTop: '1rem'
+                  marginTop: '1rem',
+                  padding: '0.3rem 0.69rem 1rem 0.7rem'
                 }
               }}
-              title={complexTabObj[value].title}
-              lescTitle={{ lineHeight: '1rem !imortant' }}
-              description={complexTabObj[value].description}
-              buttonText={'LEARN MORE'}
-              onClick={handleClickOpen}
             >
-              <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
-                <DiscoverBuildSection
-                  component={'img'}
-                  src={complexTabObj[value].image}
-                  alt='hello'
-                  width={'100%'}
-                  sx={{
-                    // borderRadius: '25px',
-                    border: `3px solid ${theme.palette.primary.main}`,
-                    borderRight: 'none',
-                    marginLeft: '4rem',
-                    [theme.breakpoints.down('md')]: {
-                      marginLeft: '0.1rem !important'
-                    }
-                  }}
-                />
-              </Box>
-            </MainSection>
-          </Box>
-        </MainSection>
+              <StyledTabs
+                value={value}
+                onChange={handleChange}
+                tabList={complextablist}
+              />
+              <MainSection
+                direction={'row'}
+                gap={5}
+                removePadding
+                layoutStyle={{
+                  marginTop: '3.8rem',
+                  paddingBottom: '1.5rem',
+                  [theme.breakpoints.down('md')]: {
+                    marginTop: '2rem'
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    marginTop: '1rem'
+                  }
+                }}
+                title={complexTabObj[value].title}
+                lescTitle={{ lineHeight: '1rem !imortant' }}
+                description={complexTabObj[value].description}
+                buttonText={'LEARN MORE'}
+                onClick={handleClickOpen}
+              >
+                <Box sx={{ flex: 0.55, display: 'grid', placeItems: 'center' }}>
+                  <DiscoverBuildSection
+                    component={'img'}
+                    src={complexTabObj[value].image}
+                    alt='hello'
+                    width={'100%'}
+                    sx={{
+                      // borderRadius: '25px',
+                      border: `3px solid ${theme.palette.primary.main}`,
+                      borderRight: 'none',
+                      marginLeft: '4rem',
+                      [theme.breakpoints.down('md')]: {
+                        marginLeft: '0.1rem !important'
+                      }
+                    }}
+                  />
+                </Box>
+              </MainSection>
+            </Box>
+          </MainSection>
+        </Container>
         <MainSection
           direction={'column'}
           textAlign={'center'}
@@ -237,6 +292,15 @@ export default function Home() {
         to manage, so grows complexity. this is what we call the cyber complexity trap and here’s how we defeat it.`}
           textaligin={'center'}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <Counters />
         </MainSection>
@@ -248,6 +312,15 @@ export default function Home() {
         Flashunt`}
           description={`See how we help organizations achieve the peace of mind they deserve.`}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <OPTConatinerWrapper>
             <OverPowerTeam />
@@ -260,6 +333,15 @@ export default function Home() {
           description={`News, updates and insights from our team.`}
           textaligin={'center'}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <TeamCard />
         </MainSection>
@@ -305,13 +387,22 @@ export default function Home() {
           </MainSection>
         </Container>
       </Box>
-      <Container>
+      <Container ref={myRef1}>
         <MainSection
           direction={'column'}
           textAlign={'center'}
           title={`FlasHunt: A Platform for Good`}
           description={`An elegant solution to a complicated problem.`}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <FlashHuntPlateform />
         </MainSection>
@@ -332,14 +423,24 @@ export default function Home() {
         }}
       >
         <Box
-          sx={{ display: 'grid', placeItems: 'center' }}
+          sx={{
+            display: 'grid',
+            placeItems: 'center',
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
           component={'img'}
           src={'/image/circle.png'}
           alt='hello'
           width={'100%'}
         />
       </Container>
-      <Container sx={{ padding: '0rem 1rem' }}>
+      <Container sx={{ padding: '0rem 1rem' }} ref={myRef2}>
         <MainSection
           direction={'column'}
           textAlign={'center'}
@@ -348,6 +449,15 @@ export default function Home() {
           title={'Our Mission is Ensuring your Mission'}
           description={'Solutions for your industry:'}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <AccordianWrapper>
             <ControlledAccordions />
@@ -361,6 +471,15 @@ export default function Home() {
           title={'Easily Build, Discover, and Triage Your Cyber Risk'}
           buttonText={'Get Started'}
           onClick={handleClickOpen}
+          layoutStyle={{
+            marginTop: '3.8rem',
+            [theme.breakpoints.down('md')]: {
+              marginTop: '3rem'
+            },
+            [theme.breakpoints.down('sm')]: {
+              marginTop: '2rem'
+            }
+          }}
         >
           <Box
             component={'img'}
@@ -442,15 +561,15 @@ const DiscoverBuildSection = styled(Box)(({ theme }) => ({
   }
 }));
 const AccordianWrapper = styled(Box)(({ theme }) => ({
-  padding: '2.3rem 6.5rem 5rem 6.5rem',
+  padding: '1rem 6.5rem 5rem 6.5rem',
   [theme.breakpoints.down('lg')]: {
-    padding: '1.9rem 3.6rem 3.5rem 3.6rem'
+    padding: '0.9rem 3.6rem 3.5rem 3.6rem'
   },
   [theme.breakpoints.down('md')]: {
-    padding: '1.7rem 2.8rem 2.7rem 2.8rem'
+    padding: '0.9rem 2.8rem 2.7rem 2.8rem'
   },
   [theme.breakpoints.down('md')]: {
-    padding: '1rem 1.2rem 1.2rem 1.2rem',
+    padding: '0.8rem 1.2rem 1.2rem 1.2rem',
     marginTop: '0rem !important'
   }
 }));

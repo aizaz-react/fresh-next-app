@@ -103,10 +103,10 @@ const Counters = () => {
               <Typography
                 variant='display1'
                 sx={{
-                  fontSize: '0.8rem',
+                  fontSize: '1rem',
                   textTransform: 'capitalize',
                   [theme.breakpoints.down('lg')]: {
-                    fontSize: '0.7rem',
+                    fontSize: '0.8rem',
                     marginTop: '1rem'
                   },
                   [theme.breakpoints.down('md')]: {

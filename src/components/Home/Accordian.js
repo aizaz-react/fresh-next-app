@@ -203,10 +203,10 @@ organization.
             <Typography
               variant='display3'
               sx={{
-                fontSize: '0.8rem ',
+                fontSize: '1.2rem ',
                 fontWeight: 300,
                 [theme.breakpoints.down('lg')]: {
-                  fontSize: '0.9rem'
+                  fontSize: '1rem'
                 },
                 [theme.breakpoints.down('md')]: {
                   fontSize: '0.8rem',
@@ -226,4 +226,4 @@ organization.
     </>
   );
 };
-export default ControlledAccordions;
+export default React.memo(ControlledAccordions);

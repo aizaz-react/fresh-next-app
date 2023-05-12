@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gcp-predeploy": "find ./build -name '\\[...*' -exec bash -c 'mv \"$1\" \"${1/.../@@@}\"' -- {} \\;",
+    "gcp-build": "find ./build -name '\\[@@@*' -exec bash -c 'mv \"$1\" \"${1/@@@/...}\"' -- {} \\;",
+    "start": "next start -p 8080",
+    "deploy": "npm run build &amp;&amp; npm run gcp-predeploy &amp;&amp; gcloud app deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.10.8",
@@ -20,6 +23,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "firebase-tools": "^11.30.0"
+  "firebase-tools": "^11.30.0"
   }
 }

@@ -4,10 +4,11 @@ import RiskIcon from '../../../public/image/RiskIcon';
 import StyledContainer from '../core/styled/Container';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useTheme } from '@emotion/react';
-import EmailModal from '../core/reusable/EmailModal';
+
+import Popup from '../core/reusable/Popup';
 const cardData = [
   {
-    title: 'CYBERSECURIT (INFOSEC)',
+    title: 'CYBERSECURITY (INFOSEC)',
     background: '#B71C1C'
   },
   {
@@ -44,7 +45,7 @@ const TabCards = () => {
   };
   return (
     <TabList>
-      <EmailModal open={modalOpen} handleClose={handleClose} />
+      <Popup open={modalOpen} handleClose={handleClose} />
 
       {cardData.map((item, index) => (
         <TabBoxMain key={index} sx={{ bgcolor: item.background }}>
