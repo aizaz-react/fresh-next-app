@@ -22,7 +22,8 @@ export const darkTheme = createTheme({
       green: '#827717',
       blue: '#3949AB',
       purple: '#6A1B9A',
-      pink: '#880E4F'
+      pink: '#880E4F',
+      gray: '#888888'
     },
 
     primary: {
