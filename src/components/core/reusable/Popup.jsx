@@ -4,24 +4,17 @@ import {
   InputBase,
   Stack,
   Typography,
-  Button,
-  styled
+  styled,
+  useTheme
 } from '@mui/material';
-import { useTheme } from '@emotion/react';
+
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import Logo from '@/assets/custom/Logo';
-import MainSection from '@/components/Home/MainSection';
 import { PrimaryButton } from '../styled/PrimaryButton';
-import Container from '../styled/Container';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
@@ -37,313 +30,253 @@ export default function Popup(props) {
         open={open}
         TransitionComponent={Transition}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <StackRow>
-            <Logo />
-            <Typography
-              variant='display2'
-              sx={{
-                fontSize: '1.2rem',
-                [theme.breakpoints.down('md')]: {
-                  fontSize: '0.9rem'
-                },
-                [theme.breakpoints.down('sm')]: {
-                  fontSize: '0.9rem'
-                }
-              }}
-            >
-              verPower
-            </Typography>
-          </StackRow>
-          <IconButton
-            edge='start'
-            color='inherit'
-            onClick={handleClose}
-            aria-label='close'
-          >
-            <CloseIcon />
-          </IconButton>
-        </Toolbar>
         <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            boxSizing: 'border-box',
-            flexDirection: 'row',
-            gap: '1rem',
-            [theme.breakpoints.down('md')]: {
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }
-          }}
+          sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
         >
-          <BackgroundLayout
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              paddingBottom: '8rem',
-              flex: 0.5,
-
-              [theme.breakpoints.down('md')]: {
-                paddingBottom: '2rem',
-                minWidth: '50rem'
-              },
-              [theme.breakpoints.down('sm')]: {
-                minWidth: '30rem'
-              }
-            }}
-          >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <StackRow>
+              <Logo />
+              <Typography
+                variant='display2'
+                sx={{
+                  fontSize: '1.2rem',
+                  [theme.breakpoints.down('md')]: {
+                    fontSize: '0.9rem'
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    fontSize: '0.9rem'
+                  }
+                }}
+              >
+                verPower
+              </Typography>
+            </StackRow>
+            <IconButton
+              edge='start'
+              color='inherit'
+              onClick={handleClose}
+              aria-label='close'
+            >
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+          <Box sx={{ flex: 1, display: 'flex' }}>
+            <BackgroundLayout>
+              <RightText display={'flex'} />
+            </BackgroundLayout>
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignSelf: 'center'
+                flex: 1
               }}
             >
-              <Typography
-                variant='h2'
+              <Box
                 sx={{
-                  textAlign: 'center',
-                  fontFamily: '"Ubuntu", sans-serif',
-                  fontSize: '6rem',
-                  textAlign: 'justify',
-                  fontWeight: 500,
-                  lineHeight: '5rem',
-                  paddingRight: '2rem',
-
-                  [theme.breakpoints.down('lg')]: {
-                    fontSize: '3rem',
-                    lineHeight: '3rem'
-                  },
-                  [theme.breakpoints.down('md')]: {
-                    fontSize: '3rem',
-                    lineHeight: '3rem'
-                  },
-                  [theme.breakpoints.down('sm')]: {
-                    fontSize: '1.2rem',
-                    textAlign: 'center',
-                    lineHeight: '1.2rem',
-                    lineBreak: 'normal',
-                    textAlign: 'left'
-                  }
-                }}
-              >
-                Join a
-                <br />
-                15-Minute
-                <br />
-                Demo!
-              </Typography>
-              <br />
-              <Typography
-                variant='display1'
-                sx={{
-                  fontSize: '1.4rem',
-                  fontWeight: 400,
-                  lineHeight: '1.7em',
                   display: 'flex',
-
-                  [theme.breakpoints.down('sm')]: {
-                    fontSize: '0.9rem',
-                    textAlign: 'center',
-                    marginTop: '.5rem',
-                    lineHeight: '1.2rem'
-                  }
-                }}
-              >
-                Learn how easily FlasHunt puts
-                <br />
-                you in control of your Cyber-Risk
-              </Typography>
-            </Box>
-
-            <Box sx={{ marginTop: '2rem', alignSelf: 'center' }}>
-              <Typography
-                variant='h2'
-                sx={{
-                  textAlign: 'center',
-                  fontFamily: '"Ubuntu", sans-serif',
-                  fontSize: '3rem',
-                  textAlign: 'justify',
-                  fontWeight: 500,
-                  lineHeight: '3.5rem',
-                  paddingRight: '3.4rem',
-                  [theme.breakpoints.down('lg')]: {
-                    fontSize: '2rem',
-                    lineHeight: '2rem'
-                  },
-                  [theme.breakpoints.down('md')]: {
-                    fontSize: '1.2rem'
-                  },
-                  [theme.breakpoints.down('sm')]: {
-                    fontSize: '1rem',
-                    textAlign: 'center',
-                    gap: '0.5rem !important',
-                    lineHeight: '1rem',
-                    textAlign: 'left',
-                    paddingRight: '2rem'
-                  }
-                }}
-              >
-                Here's what you'll
-                <br />
-                learn in t his demo:
-              </Typography>
-              <br />
-              <Typography
-                variant='display1'
-                sx={{
-                  textAlign: 'center',
-
-                  textAlign: 'center',
-                  fontSize: '1.4rem',
-                  fontWeight: 400,
-                  lineHeight: '1.7em',
-                  display: 'flex',
-                  textAlign: 'flex-start',
-
-                  [theme.breakpoints.down('lg')]: {
-                    fontSize: '1.2rem',
-
-                    lineHeight: '1.8rem'
-                  },
-                  [theme.breakpoints.down('sm')]: {
-                    fontSize: '0.7rem',
-                    textAlign: 'center',
-                    textAlign: 'left',
-                    lineHeight: '1.2rem'
-                  }
-                }}
-              >
-                Setup your Enterprise Risk Model
-                <br />
-                Perform Vendor and System Discovery
-                <br />
-                ISO-31000 Risk Triage and Mapping
-              </Typography>
-            </Box>
-          </BackgroundLayout>
-
-          <Stack
-            direction={'column'}
-            spacing={2}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              flex: 0.5,
-              padding: '0rem 4rem',
-
-              [theme.breakpoints.down('md')]: {
-                display: 'flex',
-
-                marginTop: '2rem',
-                marginLeft: '1px !important',
-                minWidth: '20rem',
-                padding: '0rem 2rem'
-              },
-              [theme.breakpoints.down('sm')]: {
-                display: 'flex',
-
-                marginTop: '2rem',
-                marginLeft: '1px !important',
-
-                padding: '0rem 2rem'
-              }
-            }}
-          >
-            <Typography
-              variant='display1'
-              sx={{
-                fontSize: '2.7rem',
-                textAlign: 'center',
-                [theme.breakpoints.down('md')]: {
-                  fontSize: '2rem',
-                  textAlign: 'center'
-                },
-                [theme.breakpoints.down('sm')]: {
-                  fontSize: '1.3rem',
-                  textAlign: 'center'
-                }
-              }}
-            >
-              Let's Get Started
-            </Typography>
-            <Stack
-              spacing={2}
-              direction={'row'}
-              sx={{
-                [theme.breakpoints.down('md')]: {
-                  display: 'flex',
-                  gap: '1rem',
                   flexDirection: 'column',
-                  marginLeft: '0px !important'
-                },
-                [theme.breakpoints.down('sm')]: {
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  flexDirection: 'column',
-                  minWidth: '4rem',
-                  gap: '1rem'
-                }
-              }}
-            >
-              <Input
-                placeholder='First Name'
-                sx={{
-                  flex: 1,
-                  [theme.breakpoints.down('sm')]: {
-                    minWidth: '250px',
-                    maxWidth: '250px'
-                  }
+                  justifyContent: 'center',
+                  alignItems: 'center'
                 }}
-              />
-              <Input
-                placeholder='Last Name'
-                sx={{
-                  flex: 1,
-                  [theme.breakpoints.down('md')]: {
-                    marginLeft: '0px !important',
+              >
+                <Typography
+                  variant='h2'
+                  sx={{
+                    fontSize: '6rem',
+                    fontWeight: 500,
+                    lineHeight: '5rem',
+                    [theme.breakpoints.down('lg')]: {
+                      fontSize: '3rem',
+                      lineHeight: '3rem'
+                    },
+                    [theme.breakpoints.down('md')]: {
+                      fontSize: '3rem',
+                      lineHeight: '3rem'
+                    },
                     [theme.breakpoints.down('sm')]: {
-                      minWidth: '250px',
-                      maxWidth: '250px'
+                      fontSize: '1.2rem',
+                      lineHeight: '1.2rem',
+                      lineBreak: 'normal',
+                      textAlign: 'left'
                     }
-                  }
-                }}
-              />
-            </Stack>
-            <Input placeholder='Work Email' />
-            <Input placeholder='Company Name' />
-            <Input placeholder='Comapny Size' />
-            <Input placeholder='Role' />
-            <PrimaryButton
-              onClick={handleClose}
-              variant='contained'
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                padding: '0.5rem 3.5rem',
-                marginTop: '1rem',
-                width: '100%',
-                [theme.breakpoints.down('md')]: {
-                  width: '100%'
-                },
-                [theme.breakpoints.down('sm')]: {
-                  width: '100%',
-                  marginTop: '2rem !important'
-                }
-              }}
-            >
-              Submit
-            </PrimaryButton>
-          </Stack>
+                  }}
+                >
+                  Join a 15-Minute Demo!
+                </Typography>
+                <br />
+                <Typography
+                  variant='display1'
+                  sx={{
+                    fontSize: '1rem',
+                    fontWeight: 400,
+                    lineHeight: '1.4rem',
+                    display: 'flex',
+
+                    [theme.breakpoints.down('sm')]: {
+                      fontSize: '0.9rem',
+                      marginTop: '.5rem',
+                      lineHeight: '1.2rem'
+                    }
+                  }}
+                >
+                  Learn how easily FlasHunt puts you in control of your
+                  Cyber-Risk
+                </Typography>
+              </Box>
+              <Form>
+                <Typography
+                  variant='display1'
+                  sx={{
+                    fontSize: '2.7rem',
+                    textAlign: 'center',
+                    [theme.breakpoints.down('md')]: {
+                      fontSize: '2rem',
+                      textAlign: 'center'
+                    },
+                    [theme.breakpoints.down('sm')]: {
+                      fontSize: '1.3rem',
+                      textAlign: 'center'
+                    }
+                  }}
+                >
+                  Let&apos;s Get Started
+                </Typography>
+                <Box
+                  display={'flex'}
+                  direction={'row'}
+                  gap={'1rem'}
+                  flexWrap={'wrap'}
+                >
+                  <Input placeholder='First Name' />
+                  <Input placeholder='Last Name' />
+                </Box>
+                <Input placeholder='Work Email' />
+                <Input placeholder='Company Name' />
+                <Input placeholder='Company Size' />
+                <PrimaryButton variant='contained' sx={{ alignSelf: 'center' }}>
+                  Get Started
+                </PrimaryButton>
+              </Form>
+            </Box>
+          </Box>
         </Box>
       </Dialog>
     </>
   );
 }
+
+const RightText = (props) => {
+  const theme = useTheme();
+  return (
+    <Box
+      sx={{
+        display: props.display,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        maxWidth: '700px'
+      }}
+    >
+      <Typography
+        variant='h2'
+        sx={{
+          fontSize: '6rem',
+          fontWeight: 500,
+          lineHeight: '5rem',
+          [theme.breakpoints.down('lg')]: {
+            fontSize: '3rem',
+            lineHeight: '3rem'
+          },
+          [theme.breakpoints.down('md')]: {
+            fontSize: '3rem',
+            lineHeight: '3rem'
+          },
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '1.2rem',
+            lineHeight: '1.2rem',
+            lineBreak: 'normal',
+            textAlign: 'left'
+          }
+        }}
+      >
+        Join a
+        <br />
+        15-Minute
+        <br />
+        Demo!
+      </Typography>
+      <br />
+      <Typography
+        variant='display1'
+        sx={{
+          fontSize: '1.4rem',
+          fontWeight: 400,
+          lineHeight: '1.4rem',
+          display: 'flex',
+
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '0.9rem',
+            marginTop: '.5rem',
+            lineHeight: '1.2rem'
+          }
+        }}
+      >
+        Learn how easily FlasHunt puts
+        <br />
+        you in control of your Cyber-Risk
+      </Typography>
+
+      <Typography
+        variant='h2'
+        sx={{
+          fontSize: '3rem',
+          fontWeight: 500,
+          lineHeight: '3.5rem',
+          paddingRight: '3.4rem',
+          marginTop: '2rem',
+          [theme.breakpoints.down('lg')]: {
+            fontSize: '2rem',
+            lineHeight: '2rem'
+          },
+          [theme.breakpoints.down('md')]: {
+            fontSize: '1.2rem'
+          },
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '1rem',
+            gap: '0.5rem !important',
+            lineHeight: '1rem',
+            paddingRight: '2rem'
+          }
+        }}
+      >
+        Here&apos;s what you&apos;ll
+        <br />
+        learn in t his demo:
+      </Typography>
+      <br />
+      <Typography
+        variant='display1'
+        sx={{
+          fontSize: '1.4rem',
+          fontWeight: 400,
+          lineHeight: '1.7em',
+          [theme.breakpoints.down('lg')]: {
+            fontSize: '1.2rem',
+            lineHeight: '1.8rem'
+          },
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '0.7rem',
+            lineHeight: '1.2rem'
+          }
+        }}
+      >
+        Setup your Enterprise Risk Model
+        <br />
+        Perform Vendor and System Discovery
+        <br />
+        ISO-31000 Risk Triage and Mapping
+      </Typography>
+    </Box>
+  );
+};
 
 const StackRow = styled(Stack)(({ open, theme }) => ({
   flexDirection: 'row',
@@ -355,21 +288,37 @@ const StackRow = styled(Stack)(({ open, theme }) => ({
 }));
 
 const Input = styled(InputBase)(({ theme }) => ({
-  ...theme.typography.display1,
+  width: '100%',
+  flex: 1,
+  minWidth: '200px',
   border: '1px solid gray',
-  borderRadius: '5px',
-  padding: '0.2rem .4rem',
-  fontSize: '1rem',
-  [theme.breakpoints.down('sm')]: {
-    minWidth: '8rem'
-  }
+  padding: '.2rem .4rem',
+  borderRadius: '5px'
 }));
-const BackgroundLayout = styled(Box)({
+
+const BackgroundLayout = styled(Box)(({ theme }) => ({
   backgroundImage: `url(/image/moodboard.png)`,
   backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover'
+  backgroundSize: 'cover',
+  width: '50%',
+  display: 'flex',
+  flexDirection: 'column',
+  paddingTop: '3rem',
+  [theme.breakpoints.down('md')]: {
+    display: 'none'
+  }
+}));
 
-  //   backgroundColor: 'red',
-  //   width: '100%',
-  //   height: '100px',
-});
+const Form = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  gap: '1rem',
+  flexWrap: 'wrap',
+  component: 'form',
+  maxWidth: '600px',
+  padding: '3rem 2rem',
+  [theme.breakpoints.down('md')]: {
+    margin: '0 auto'
+  }
+}));

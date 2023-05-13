@@ -52,7 +52,7 @@ const MainSection = (props) => {
             ...lescTitle
           }}
         >
-          {title || 'required title'}
+          {title}
         </MainHeading>
         <MainDescription
           component={'p'}

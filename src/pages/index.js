@@ -26,15 +26,12 @@ export default function Home() {
   const myRef2 = useRef(null);
   const myRef3 = useRef(null);
   const myRef4 = useRef(null);
-  console.log('message', message);
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
 
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
-    console.log('my ref is this', message);
-
     if (message == '1') {
       myRef1.current.scrollIntoView({ behavior: 'smooth' });
       setMessage('');
@@ -56,7 +53,6 @@ export default function Home() {
   };
 
   const handleClickOpen = () => {
-    console.log('hello');
     setModalOpen(true);
   };
   const handleClose = () => {
@@ -270,7 +266,6 @@ export default function Home() {
                     alt='hello'
                     width={'100%'}
                     sx={{
-                      // borderRadius: '25px',
                       border: `3px solid ${theme.palette.primary.main}`,
                       borderRight: 'none',
                       marginLeft: '4rem',

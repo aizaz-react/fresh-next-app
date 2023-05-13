@@ -55,7 +55,7 @@ const NavBar = (props) => {
     >
       <StackRow justifyContent={'space-between'} py={1}>
         <StackRow>
-          <Logo size={matches ? '1rem' : '2rem'} />
+          <Logo size={matches ? '1.5rem' : '2rem'} />
           <Typography
             variant='display2'
             sx={{
@@ -226,7 +226,7 @@ const DropDown = styled(Box)(({ theme, open }) => ({
   position: 'absolute',
   left: 0,
   right: 0,
-  top: '2.8rem',
+  top: '3.2rem',
   height: '0px',
   overflow: 'hidden',
   transition: 'height 0.15s ease-out',
