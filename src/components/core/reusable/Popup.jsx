@@ -5,9 +5,9 @@ import {
   Stack,
   Typography,
   styled,
+  useMediaQuery,
   useTheme
 } from '@mui/material';
-
 import Dialog from '@mui/material/Dialog';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -22,6 +22,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Popup(props) {
   const { open, handleClose } = props;
   const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <>
       <Dialog
@@ -71,7 +74,7 @@ export default function Popup(props) {
             >
               <Box
                 sx={{
-                  display: 'flex',
+                  display: matches ? 'flex' : 'none',
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center'
@@ -151,6 +154,7 @@ export default function Popup(props) {
                 <Input placeholder='Work Email' />
                 <Input placeholder='Company Name' />
                 <Input placeholder='Company Size' />
+                <Input placeholder='Role' />
                 <PrimaryButton variant='contained' sx={{ alignSelf: 'center' }}>
                   Get Started
                 </PrimaryButton>
